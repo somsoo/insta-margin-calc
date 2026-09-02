@@ -16,16 +16,195 @@
     </style>
 </head>
 <body>
-    <div class="ad-slot">구글 애드센스 (상단)</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
     
     <div class="card">
         <h1>인스타 공동구매 마진 계산기</h1>
         <p>플랫폼 수수료와 배송비를 제외한 인스타 공구 순수익 마진을 계산합니다.</p>
         
-        <div style="padding: 40px 0; border: 1px solid #e5e7eb; border-radius: 10px; margin: 20px 0; background: #f3f4f6;">
-            <!-- UI 로직 들어갈 자리 -->
-            <p style="color: #6b7280; font-weight: bold;">[계산기 / 변환기 UI 영역]</p>
+        <div id="insta-gonggu-margin-calculator" style="font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 420px; margin: 20px auto; padding: 25px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+    <h2 style="text-align: center; color: #333; margin-bottom: 25px; font-size: 1.6em; font-weight: 600; letter-spacing: -0.5px;">💰 인스타 공동구매 마진 계산기</h2>
+
+    <div style="margin-bottom: 15px;">
+        <label for="item-selling-price" style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95em;">상품 판매가 (개당)</label>
+        <input type="number" id="item-selling-price" value="30000" min="0" style="width: calc(100% - 20px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; color: #333; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#6a5acd'; this.style.boxShadow='0 0 0 3px rgba(106, 90, 205, 0.2)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="item-cost-price" style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95em;">상품 원가 (개당)</label>
+        <input type="number" id="item-cost-price" value="15000" min="0" style="width: calc(100% - 20px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; color: #333; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#6a5acd'; this.style.boxShadow='0 0 0 3px rgba(106, 90, 205, 0.2)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="total-sales-quantity" style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95em;">총 판매 수량</label>
+        <input type="number" id="total-sales-quantity" value="100" min="0" style="width: calc(100% - 20px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; color: #333; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#6a5acd'; this.style.boxShadow='0 0 0 3px rgba(106, 90, 205, 0.2)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="platform-fee-rate" style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95em;">플랫폼 수수료율 (%)</label>
+        <input type="number" id="platform-fee-rate" value="3.5" min="0" max="100" step="0.1" style="width: calc(100% - 20px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; color: #333; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#6a5acd'; this.style.boxShadow='0 0 0 3px rgba(106, 90, 205, 0.2)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="shipping-cost-per-unit" style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95em;">건당 배송비</label>
+        <input type="number" id="shipping-cost-per-unit" value="3000" min="0" style="width: calc(100% - 20px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; color: #333; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#6a5acd'; this.style.boxShadow='0 0 0 3px rgba(106, 90, 205, 0.2)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="marketing-advertising-costs" style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95em;">마케팅/광고비 (총액)</label>
+        <input type="number" id="marketing-advertising-costs" value="100000" min="0" style="width: calc(100% - 20px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; color: #333; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#6a5acd'; this.style.boxShadow='0 0 0 3px rgba(106, 90, 205, 0.2)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+    </div>
+
+    <div style="margin-bottom: 25px;">
+        <label for="other-miscellaneous-costs" style="display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 0.95em;">기타 잡비 (총액)</label>
+        <input type="number" id="other-miscellaneous-costs" value="50000" min="0" style="width: calc(100% - 20px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; color: #333; outline: none; transition: border-color 0.3s ease, box-shadow 0.3s ease;" onfocus="this.style.borderColor='#6a5acd'; this.style.boxShadow='0 0 0 3px rgba(106, 90, 205, 0.2)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+    </div>
+
+    <button id="calculate-button" style="width: 100%; padding: 14px 20px; background-color: #6a5acd; color: #fff; border: none; border-radius: 8px; font-size: 1.1em; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; font-weight: 600;" onmouseover="this.style.backgroundColor='#5c4bb8'" onmouseout="this.style.backgroundColor='#6a5acd'" onmousedown="this.style.transform='scale(0.98)'" onmouseup="this.style.transform='scale(1)'">마진 계산하기</button>
+
+    <div id="result-display" style="margin-top: 30px; padding: 25px; background-color: #f7f7f7; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); display: none;">
+        <h3 style="text-align: center; color: #444; margin-bottom: 20px; font-size: 1.4em; font-weight: 600;">📊 계산 결과</h3>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px dashed #e0e0e0;">
+            <span style="color: #666; font-weight: 500; font-size: 0.95em;">총 판매 금액</span>
+            <span id="total-sales-revenue-val" style="color: #333; font-weight: 600; font-size: 1.05em;"></span>
         </div>
+        <div style="margin-top: 20px; margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="color: #666; font-weight: 500; font-size: 0.95em;">- 총 비용</span>
+                <span id="total-expenses-val" style="color: #e74c3c; font-weight: 600; font-size: 1.05em;"></span>
+            </div>
+            <div style="padding-left: 15px; font-size: 0.9em; color: #888;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>ㄴ 총 상품 원가</span>
+                    <span id="total-item-cost-val" style="font-weight: 500;"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>ㄴ 총 플랫폼 수수료</span>
+                    <span id="total-platform-fee-val" style="font-weight: 500;"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>ㄴ 총 배송비</span>
+                    <span id="total-shipping-cost-val" style="font-weight: 500;"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span>ㄴ 마케팅/광고비</span>
+                    <span id="marketing-advertising-costs-val" style="font-weight: 500;"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>ㄴ 기타 잡비</span>
+                    <span id="other-miscellaneous-costs-val" style="font-weight: 500;"></span>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 2px solid #ddd; font-size: 1.2em;">
+            <span style="color: #333; font-weight: 700;">순수익</span>
+            <span id="net-profit-val" style="color: #28a745; font-weight: 700;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.2em;">
+            <span style="color: #333; font-weight: 700;">순수익 마진율</span>
+            <span id="net-profit-margin-rate-val" style="color: #28a745; font-weight: 700;"></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const getElement = (id) => document.getElementById(id);
+
+        const itemSellingPriceInput = getElement('item-selling-price');
+        const itemCostPriceInput = getElement('item-cost-price');
+        const totalSalesQuantityInput = getElement('total-sales-quantity');
+        const platformFeeRateInput = getElement('platform-fee-rate');
+        const shippingCostPerUnitInput = getElement('shipping-cost-per-unit');
+        const marketingAdvertisingCostsInput = getElement('marketing-advertising-costs');
+        const otherMiscellaneousCostsInput = getElement('other-miscellaneous-costs');
+        const calculateButton = getElement('calculate-button');
+        const resultDisplay = getElement('result-display');
+
+        const totalSalesRevenueVal = getElement('total-sales-revenue-val');
+        const totalExpensesVal = getElement('total-expenses-val');
+        const totalItemCostVal = getElement('total-item-cost-val');
+        const totalPlatformFeeVal = getElement('total-platform-fee-val');
+        const totalShippingCostVal = getElement('total-shipping-cost-val');
+        const marketingAdvertisingCostsVal = getElement('marketing-advertising-costs-val');
+        const otherMiscellaneousCostsVal = getElement('other-miscellaneous-costs-val');
+        const netProfitVal = getElement('net-profit-val');
+        const netProfitMarginRateVal = getElement('net-profit-margin-rate-val');
+
+        // Helper to format numbers as Korean currency
+        const formatCurrency = (number) => {
+            return new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(number);
+        };
+
+        // Helper to format percentages
+        const formatPercentage = (number) => {
+            return new Intl.NumberFormat('ko-KR', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(number / 100);
+        };
+
+        calculateButton.addEventListener('click', () => {
+            const itemSellingPrice = parseFloat(itemSellingPriceInput.value) || 0;
+            const itemCostPrice = parseFloat(itemCostPriceInput.value) || 0;
+            const totalSalesQuantity = parseFloat(totalSalesQuantityInput.value) || 0;
+            const platformFeeRate = parseFloat(platformFeeRateInput.value) || 0;
+            const shippingCostPerUnit = parseFloat(shippingCostPerUnitInput.value) || 0;
+            const marketingAdvertisingCosts = parseFloat(marketingAdvertisingCostsInput.value) || 0;
+            const otherMiscellaneousCosts = parseFloat(otherMiscellaneousCostsInput.value) || 0;
+
+            // 1. 총 판매 금액 (Total Sales Revenue)
+            const totalSalesRevenue = itemSellingPrice * totalSalesQuantity;
+
+            // 2. 총 상품 원가 (Total Item Cost)
+            const totalItemCost = itemCostPrice * totalSalesQuantity;
+
+            // 3. 총 플랫폼 수수료 (Total Platform Fee)
+            const totalPlatformFee = totalSalesRevenue * (platformFeeRate / 100);
+
+            // 4. 총 배송비 (Total Shipping Cost)
+            const totalShippingCost = shippingCostPerUnit * totalSalesQuantity;
+
+            // 5. 총 비용 (Total Expenses)
+            const totalExpenses = totalItemCost + totalPlatformFee + totalShippingCost + marketingAdvertisingCosts + otherMiscellaneousCosts;
+
+            // 6. 순수익 (Net Profit)
+            const netProfit = totalSalesRevenue - totalExpenses;
+
+            // 7. 순수익 마진율 (%) (Net Profit Margin %)
+            let netProfitMarginRate = 0;
+            if (totalSalesRevenue > 0) {
+                netProfitMarginRate = (netProfit / totalSalesRevenue) * 100;
+            }
+
+            // Display results
+            totalSalesRevenueVal.textContent = formatCurrency(totalSalesRevenue);
+            totalExpensesVal.textContent = formatCurrency(totalExpenses);
+            totalItemCostVal.textContent = formatCurrency(totalItemCost);
+            totalPlatformFeeVal.textContent = formatCurrency(totalPlatformFee);
+            totalShippingCostVal.textContent = formatCurrency(totalShippingCost);
+            marketingAdvertisingCostsVal.textContent = formatCurrency(marketingAdvertisingCosts);
+            otherMiscellaneousCostsVal.textContent = formatCurrency(otherMiscellaneousCosts);
+            
+            netProfitVal.textContent = formatCurrency(netProfit);
+            netProfitMarginRateVal.textContent = formatPercentage(netProfitMarginRate);
+
+            // Apply color to net profit/margin
+            if (netProfit < 0) {
+                netProfitVal.style.color = '#e74c3c'; // Red for loss
+                netProfitMarginRateVal.style.color = '#e74c3c'; // Red for loss
+            } else {
+                netProfitVal.style.color = '#28a745'; // Green for profit
+                netProfitMarginRateVal.style.color = '#28a745'; // Green for profit
+            }
+
+            resultDisplay.style.display = 'block'; // Show the results section
+        });
+
+        // Initialize calculation on page load with default values
+        calculateButton.click();
+    });
+</script>
 
         <button class="btn-share" onclick="shareApp()">
             앱 공유하기 (Web Share API)
@@ -33,7 +212,9 @@
     </div>
 
     <div class="coupang-banner">쿠팡 파트너스 맞춤형 기획전 배너</div>
-    <div class="ad-slot">구글 애드센스 (하단)</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
 
     <!-- JSON-LD 구조화 데이터 -->
     <script type="application/ld+json">
