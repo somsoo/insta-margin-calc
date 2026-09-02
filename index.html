@@ -33,7 +33,54 @@
 
     <!-- Main Logic Container -->
     <div class="w-full max-w-2xl glass-card p-6 md:p-8 mb-8">
-        <p class='text-red-500 font-bold text-center'>서버 에러가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
+        
+<div class="flex flex-col gap-4">
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">판매가 (원)</label>
+            <input type="number" id="sellPrice" value="50000" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">원가 (원)</label>
+            <input type="number" id="costPrice" value="30000" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500">
+        </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">플랫폼 수수료 (%)</label>
+            <input type="number" id="feePercent" value="3.3" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1">기타 비용 (포장비 등)</label>
+            <input type="number" id="extraCost" value="2500" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500">
+        </div>
+    </div>
+    <button onclick="calcInsta()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition">계산하기</button>
+</div>
+<div class="receipt mt-8">
+    <h3 class="text-xl font-extrabold text-center mb-4">공동구매 정산 영수증</h3>
+    <div class="flex justify-between border-b pb-2 mb-2 text-gray-600"><span>예상 총 매출</span><span id="resRev">50,000 원</span></div>
+    <div class="flex justify-between border-b pb-2 mb-2 text-gray-600"><span>총 비용 (원가+기타)</span><span id="resCost">32,500 원</span></div>
+    <div class="flex justify-between border-b pb-2 mb-2 text-gray-600"><span>플랫폼 수수료</span><span id="resFee">1,650 원</span></div>
+    <div class="flex justify-between pt-2 mt-4 text-green-700 font-extrabold text-2xl bg-green-50 p-4 rounded-lg"><span>순수익 마진</span><span id="resMargin">15,850 원</span></div>
+</div>
+<script>
+function calcInsta() {
+    let sell = parseFloat(document.getElementById('sellPrice').value) || 0;
+    let cost = parseFloat(document.getElementById('costPrice').value) || 0;
+    let fee = parseFloat(document.getElementById('feePercent').value) || 0;
+    let extra = parseFloat(document.getElementById('extraCost').value) || 0;
+    let feeAmt = sell * (fee/100);
+    let totalCost = cost + extra;
+    let margin = sell - totalCost - feeAmt;
+    document.getElementById('resRev').innerText = sell.toLocaleString() + " 원";
+    document.getElementById('resCost').innerText = totalCost.toLocaleString() + " 원";
+    document.getElementById('resFee').innerText = feeAmt.toLocaleString() + " 원";
+    document.getElementById('resMargin').innerText = margin.toLocaleString() + " 원 (" + ((margin/sell)*100).toFixed(1) + "%)";
+}
+calcInsta();
+</script>
+
     </div>
 
     <!-- Share & Ads -->
