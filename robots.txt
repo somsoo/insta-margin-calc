@@ -1,1 +1,4 @@
-User-agent: *\nAllow: /\nSitemap: https://somsoo.github.io/insta-margin-calc/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://insta-margin-calc.enjoy-onepage.com/sitemap.xml
