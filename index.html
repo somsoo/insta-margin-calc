@@ -35,25 +35,58 @@
 <meta content="https://insta-margin-calc.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
 <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "인스타 공구 마진 계산기 | 인플루언서 판매 수수료·실수령 순수익 계산기",
-        "alternateName": "인스타마진계산",
-        "url": "https://insta-margin-calc.enjoy-onepage.com/",
-        "description": "인스타그램 공동구매 진행 시 공급가, 소비자 판매가, 플랫폼/PG 수수료, 배송비, 부가세·소득세를 실시간 계산하여 실수령 순수익과 최종 마진율을 산출합니다.",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "inLanguage": "ko",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "KRW"
-        }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://insta-margin-calc.enjoy-onepage.com/#webapp",
+      "name": "인스타 공구 마진 계산기",
+      "url": "https://insta-margin-calc.enjoy-onepage.com/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "인스타그램 공동구매 진행 시 공급가, 소비자 판매가, 플랫폼/PG 수수료, 배송비, 부가세·소득세를 실시간 계산하여 실수령 순수익과 최종 마진율을 산출합니다.",
+      "image": "https://insta-margin-calc.enjoy-onepage.com/og-image.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
       }
-    ]
-    </script>
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://insta-margin-calc.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "인스타 공구 셀러의 적정 순마진율은 몇 %인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "벤더사(제조사) 위탁 배송 기준 최소 20~25% 이상, 사입 재고 부담 시 최소 35~40% 이상의 순마진이 확보되어야 광고비와 인건비를 감당할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "현금 입금 유도 시 세금 계산은 어떻게 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "현금영수증 미발급 시 국세청 미발급 가산세(20%) 및 탈세 조사 대상이 되므로, 모든 결제는 PG 결제창을 통해 합법적으로 정산해야 합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "무료배송 상품은 배송비를 어디에 녹여야 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "소비자 판매가에 편도 택배비(약 3,000~3,500원)와 포장 부자재비(500원)를 기본 원가에 가산하여 설정해야 합니다."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
         body { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Pretendard', sans-serif; }
