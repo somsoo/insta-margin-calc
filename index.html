@@ -129,6 +129,16 @@
     overflow: hidden !important;
   }
 </style>
+<style id="mobile-hardening-shield">
+  @media (max-width: 640px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+    button, [role="button"], a.btn {
+      min-height: 42px;
+    }
+  }
+</style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
 <!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
@@ -159,26 +169,26 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">공구 판매가 (원)</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="sellingPrice" placeholder="35000" type="number" aria-label="35000" />
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="sellingPrice" placeholder="35000" type="number" min="0" aria-label="35000" />
 </div>
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">상품 원가/공급가 (원)</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="costPrice" placeholder="15000" type="number" aria-label="15000" />
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="costPrice" placeholder="15000" type="number" min="0" aria-label="15000" />
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">플랫폼/PG 수수료 (%)</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="feeRate" placeholder="3.5" step="0.1" type="number" aria-label="3.5" />
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="feeRate" placeholder="3.5" step="0.1" type="number" min="0" aria-label="3.5" />
 </div>
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">건당 배송비 (원)</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="shippingFee" placeholder="3000" type="number" aria-label="3000" />
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="shippingFee" placeholder="3000" type="number" min="0" aria-label="3000" />
 </div>
 </div>
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">예상 판매 수량 (개)</label>
-<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="quantity" placeholder="100" type="number" value="100" aria-label="100" />
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="quantity" placeholder="100" type="number" min="0" value="100" aria-label="100" />
 </div>
 </form>
 <!-- Receipt Output -->
