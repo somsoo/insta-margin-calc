@@ -9,7 +9,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<title>인스타 공구 마진 계산기 | 인플루언서 판매</title>
+<title>인스타 공구 마진 계산기 | 판매 수수료·순수익</title>
 <meta content="인스타 공동구매의 공급가·판매가·PG 수수료·배송비·부가세를 반영해 실수령 순수익과 마진율을 바로 계산합니다." name="description"/>
 <meta content="인스타 공구 마진 계산기, 공동구매 수수료 계산, 인플루언서 공구 순수익, 판매 마진율 계산기, 셀러 마진 계산, 스마트스토어 마진, PG 수수료" name="keywords"/>
 <link href="https://insta-margin-calc.enjoy-onepage.com/" rel="canonical"/>
@@ -25,7 +25,7 @@
 <!-- 오픈그래프 (OpenGraph) 메타 태그 -->
 <meta content="website" property="og:type"/>
 <meta content="인스타마진계산" property="og:site_name"/>
-<meta content="인스타 공구 마진 계산기 | 인플루언서 판매" property="og:title"/>
+<meta content="인스타 공구 마진 계산기 | 판매 수수료·순수익" property="og:title"/>
 <meta content="인스타 공동구매의 공급가·판매가·PG 수수료·배송비·부가세를 반영해 실수령 순수익과 마진율을 바로 계산합니다." property="og:description"/>
 <meta content="https://insta-margin-calc.enjoy-onepage.com/" property="og:url"/>
 <meta content="https://insta-margin-calc.enjoy-onepage.com/og-image.png" property="og:image"/>
@@ -34,7 +34,7 @@
 <meta content="ko_KR" property="og:locale"/>
 <!-- 트위터 카드 (Twitter Card) -->
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="인스타 공구 마진 계산기 | 인플루언서 판매" name="twitter:title"/>
+<meta content="인스타 공구 마진 계산기 | 판매 수수료·순수익" name="twitter:title"/>
 <meta content="인스타 공동구매의 공급가·판매가·PG 수수료·배송비·부가세를 반영해 실수령 순수익과 마진율을 바로 계산합니다." name="twitter:description"/>
 <meta content="https://insta-margin-calc.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
@@ -319,11 +319,11 @@
               const marginRate = totalSales > 0 ? (netProfit / totalSales) * 100 : 0;
 
               // DOM 업데이트
-              document.getElementById('resQty').innerText = formatNumber(quantity);
-              document.getElementById('resTotalSales').innerText = `${formatNumber(totalSales)} 원`;
-              document.getElementById('resTotalCost').innerText = `-${formatNumber(totalCost)} 원`;
-              document.getElementById('resTotalFee').innerText = `-${formatNumber(totalFee)} 원`;
-              document.getElementById('resTotalShipping').innerText = `-${formatNumber(totalShipping)} 원`;
+              document.getElementById('resQty').textContent = formatNumber(quantity);
+              document.getElementById('resTotalSales').textContent = `${formatNumber(totalSales)} 원`;
+              document.getElementById('resTotalCost').textContent = `-${formatNumber(totalCost)} 원`;
+              document.getElementById('resTotalFee').textContent = `-${formatNumber(totalFee)} 원`;
+              document.getElementById('resTotalShipping').textContent = `-${formatNumber(totalShipping)} 원`;
               
               const profitPerItemEl = document.getElementById('resProfitPerItem');
               profitPerItemEl.textContent = `${formatNumber(profitPerItem)} 원`;
