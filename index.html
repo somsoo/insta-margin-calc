@@ -166,6 +166,96 @@
   .ad-bottom { min-height: 280px !important; }
   .ad-bottom ins { min-height: 280px !important; }
 </style>
+<style id="insta-margin-enhancements">
+  /* 2026 Insta Margin UI Enhancements */
+  .quick-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .quick-chip {
+    background: #fdf2f8;
+    color: #9d174d;
+    border: 1px solid #fbcfe8;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .quick-chip:hover {
+    background: #fce7f3;
+    border-color: #f472b6;
+  }
+  .quick-chip:active {
+    background: #ec4899;
+    color: #ffffff;
+    border-color: #db2777;
+  }
+  .quick-chip.blue {
+    background: #f0fdf4;
+    color: #166534;
+    border-color: #bbf7d0;
+  }
+  .quick-chip.blue:hover {
+    background: #dcfce7;
+  }
+  .quick-chip.amber {
+    background: #fffbeb;
+    color: #92400e;
+    border-color: #fde68a;
+  }
+  .quick-chip.amber:hover {
+    background: #fef3c7;
+  }
+  .receipt-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  .receipt-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .receipt-btn-primary {
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(225, 29, 72, 0.25);
+  }
+  .receipt-btn-primary:hover {
+    filter: brightness(1.08);
+  }
+  .receipt-btn-secondary {
+    background: #ffffff;
+    color: #334155;
+    border-color: #cbd5e1;
+  }
+  .receipt-btn-secondary:hover {
+    background: #f8fafc;
+  }
+  @media (max-width: 400px) {
+    .receipt-actions {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
 <!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
@@ -199,6 +289,11 @@
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">공구 판매가 (원)</label>
 <input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="sellingPrice" placeholder="35000" type="number" min="0" aria-label="35000" / inputmode="numeric">
+<div class="quick-chips mt-1.5" aria-label="목표 마진율 판매가 자동 산출">
+  <button type="button" class="quick-chip amber" onclick="setTargetMargin(20)">🎯 마진 20% 책정</button>
+  <button type="button" class="quick-chip amber" onclick="setTargetMargin(30)">🎯 마진 30% 책정</button>
+  <button type="button" class="quick-chip amber" onclick="setTargetMargin(40)">🎯 마진 40% 책정</button>
+</div>
 </div>
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">상품 원가/공급가 (원)</label>
@@ -209,10 +304,22 @@
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">플랫폼/PG 수수료 (%)</label>
 <input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="feeRate" placeholder="3.5" step="0.1" type="number" min="0" aria-label="3.5" / inputmode="numeric">
+<div class="quick-chips mt-1.5" aria-label="플랫폼 수수료 퀵 프리셋">
+  <button type="button" class="quick-chip" onclick="setFeePreset(3.3)">3.3% 스토어</button>
+  <button type="button" class="quick-chip" onclick="setFeePreset(5.5)">5.5% 카카오</button>
+  <button type="button" class="quick-chip" onclick="setFeePreset(10.0)">10% 오픈마켓</button>
+  <button type="button" class="quick-chip" onclick="setFeePreset(20.0)">20% 위탁/몰</button>
+</div>
 </div>
 <div>
 <label class="block text-xs font-semibold text-slate-600 mb-1">건당 배송비 (원)</label>
 <input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="shippingFee" placeholder="3000" type="number" min="0" aria-label="3000" / inputmode="numeric">
+<div class="quick-chips mt-1.5" aria-label="배송비 퀵 프리셋">
+  <button type="button" class="quick-chip blue" onclick="setShippingPreset(0)">0원 무료배송</button>
+  <button type="button" class="quick-chip blue" onclick="setShippingPreset(3000)">3,000원 기본</button>
+  <button type="button" class="quick-chip blue" onclick="setShippingPreset(3500)">3,500원 일반</button>
+  <button type="button" class="quick-chip blue" onclick="setShippingPreset(4000)">4,000원 포장포함</button>
+</div>
 </div>
 </div>
 <div>
@@ -227,12 +334,24 @@
 <div class="bg-gradient-to-b from-amber-50/60 to-orange-50/30 border border-amber-200/60 rounded-2xl p-6 shadow-sm relative overflow-hidden font-mono" id="receiptCard">
 <!-- Receipt Decorative Top Notch -->
 <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white rounded-full border border-slate-100 shadow-inner"></div>
-<!-- 원클릭 결과 복사 버튼 -->
-<div class="mt-4 text-center">
-<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white text-sm font-bold rounded-xl shadow-md transition-all duration-200 whitespace-nowrap" onclick="window.copyResultToClipboard()" type="button">
-<svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-<span>결과 전체 복사하기</span>
-</button>
+<!-- 2026 셀러 스마트 액션 툴바 (영수증 PNG 저장, 복사, 공유, 리셋) -->
+<div class="receipt-actions">
+  <button type="button" class="receipt-btn receipt-btn-primary" onclick="downloadMarginReceiptPNG()">
+    <span>📷</span>
+    <span>영수증 PNG 저장</span>
+  </button>
+  <button type="button" class="receipt-btn receipt-btn-secondary" onclick="copyMarginSummary()">
+    <span>📋</span>
+    <span>정산 요약 복사</span>
+  </button>
+  <button type="button" class="receipt-btn receipt-btn-secondary" onclick="shareMarginResult()">
+    <span>💬</span>
+    <span>공유하기</span>
+  </button>
+  <button type="button" class="receipt-btn receipt-btn-secondary" onclick="resetMarginValues()">
+    <span>🔄</span>
+    <span>기본값 리셋</span>
+  </button>
 </div>
 <!-- Receipt Header -->
 <div class="text-center pb-4 border-b border-dashed border-amber-300/70">
@@ -340,6 +459,238 @@
 
             // 초기 계산 실행
             calculate();
+
+            // 2026 Insta Margin UI Helper Functions
+            window.setFeePreset = function(rate) {
+              elements.feeRate.value = rate;
+              calculate();
+            };
+
+            window.setShippingPreset = function(fee) {
+              elements.shippingFee.value = fee;
+              calculate();
+            };
+
+            window.setTargetMargin = function(targetMarginPct) {
+              // Target Margin Rate = Net Profit / Selling Price
+              // Net Profit = Selling Price - Cost - (Selling Price * FeeRate/100) - Shipping
+              // Selling Price * (1 - FeeRate/100 - targetMarginPct/100) = Cost + Shipping
+              const cost = parseFloat(elements.costPrice.value) || 0;
+              const shipping = parseFloat(elements.shippingFee.value) || 0;
+              const feeRate = parseFloat(elements.feeRate.value) || 0;
+              
+              const denominator = 1 - (feeRate / 100) - (targetMarginPct / 100);
+              if (denominator <= 0) {
+                alert('해당 마진율은 수수료율과 합산하여 100%를 초과할 수 없습니다.');
+                return;
+              }
+              const targetSelling = Math.ceil((cost + shipping) / denominator / 100) * 100; // 100원 단위 올림
+              elements.sellingPrice.value = Math.max(0, targetSelling);
+              calculate();
+            };
+
+            window.resetMarginValues = function() {
+              elements.sellingPrice.value = '35000';
+              elements.costPrice.value = '15000';
+              elements.feeRate.value = '3.5';
+              elements.shippingFee.value = '3000';
+              elements.quantity.value = '100';
+              calculate();
+            };
+
+            window.copyMarginSummary = function() {
+              const selling = elements.sellingPrice.value || '0';
+              const cost = elements.costPrice.value || '0';
+              const qty = elements.quantity.value || '0';
+              const sales = document.getElementById('resTotalSales').textContent;
+              const netProfit = document.getElementById('resNetProfit').textContent;
+              const margin = document.getElementById('resMarginRate').textContent;
+              const profitPerItem = document.getElementById('resProfitPerItem').textContent;
+
+              const text = [
+                '🧾 [인스타 공구 정산 영수증]',
+                '• 판매가: ' + Number(selling).toLocaleString() + '원 (공급가: ' + Number(cost).toLocaleString() + '원)',
+                '• 판매수량: ' + Number(qty).toLocaleString() + '개',
+                '• 총 매출액: ' + sales,
+                '• 개당 순수익: ' + profitPerItem,
+                '• 최종 순이익: ' + netProfit + ' (마진율: ' + margin + ')',
+                '',
+                '👉 실시간 공구 마진 계산기: ' + window.location.href
+              ].join('\n');
+
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                  window.showToastNotification('정산 요약이 클립보드에 복사되었습니다! 📋');
+                }).catch(() => fallbackCopy(text));
+              } else {
+                fallbackCopy(text);
+              }
+            };
+
+            window.shareMarginResult = function() {
+              const netProfit = document.getElementById('resNetProfit').textContent;
+              const margin = document.getElementById('resMarginRate').textContent;
+              const shareData = {
+                title: '인스타 공구 마진 정산 영수증',
+                text: '최종 순이익: ' + netProfit + ' (순마진율 ' + margin + ') 정산 결과를 확인해보세요!',
+                url: window.location.href
+              };
+              if (navigator.share) {
+                navigator.share(shareData).catch(() => copyMarginSummary());
+              } else {
+                copyMarginSummary();
+              }
+            };
+
+            window.downloadMarginReceiptPNG = function() {
+              const canvas = document.createElement('canvas');
+              const ctx = canvas.getContext('2d');
+              canvas.width = 640;
+              canvas.height = 860;
+
+              // Background - warm cream paper
+              ctx.fillStyle = '#f8fafc';
+              ctx.fillRect(0, 0, 640, 860);
+
+              // Receipt Inner Card
+              ctx.fillStyle = '#ffffff';
+              ctx.roundRect ? ctx.roundRect(40, 40, 560, 780, 20) : ctx.rect(40, 40, 560, 780);
+              ctx.fill();
+              ctx.lineWidth = 2;
+              ctx.strokeStyle = '#fbcfe8';
+              ctx.stroke();
+
+              // Top Accent Bar (Instagram pink gradient)
+              const grad = ctx.createLinearGradient(40, 40, 600, 40);
+              grad.addColorStop(0, '#f43f5e');
+              grad.addColorStop(0.5, '#ec4899');
+              grad.addColorStop(1, '#8b5cf6');
+              ctx.fillStyle = grad;
+              ctx.fillRect(40, 40, 560, 12);
+
+              // Header
+              ctx.fillStyle = '#9d174d';
+              ctx.font = 'bold 14px sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText('INSTAGRAM GROUP-BUY MARGIN RECEIPT', 320, 90);
+
+              ctx.fillStyle = '#0f172a';
+              ctx.font = '900 26px sans-serif';
+              ctx.fillText('공동구매 정산 영수증', 320, 130);
+
+              const now = new Date();
+              const dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0') + ' ' + String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+              ctx.fillStyle = '#64748b';
+              ctx.font = '12px monospace';
+              ctx.fillText('발행일시: ' + dateStr, 320, 160);
+
+              // Dashed Line
+              ctx.beginPath();
+              ctx.setLineDash([6, 4]);
+              ctx.strokeStyle = '#cbd5e1';
+              ctx.lineWidth = 1.5;
+              ctx.moveTo(70, 185);
+              ctx.lineTo(570, 185);
+              ctx.stroke();
+              ctx.setLineDash([]);
+
+              // Data Rows Helper
+              function drawRow(label, value, y, isBold, color) {
+                ctx.textAlign = 'left';
+                ctx.fillStyle = '#475569';
+                ctx.font = (isBold ? 'bold ' : '') + '15px sans-serif';
+                ctx.fillText(label, 75, y);
+
+                ctx.textAlign = 'right';
+                ctx.fillStyle = color || (isBold ? '#0f172a' : '#1e293b');
+                ctx.font = (isBold ? 'bold ' : '') + '15px monospace';
+                ctx.fillText(value, 565, y);
+              }
+
+              const selling = elements.sellingPrice.value || '0';
+              const cost = elements.costPrice.value || '0';
+              const feeRate = elements.feeRate.value || '0';
+              const shipping = elements.shippingFee.value || '0';
+              const qty = elements.quantity.value || '0';
+
+              drawRow('공구 판매가 (소비자가)', Number(selling).toLocaleString() + ' 원', 225, false);
+              drawRow('상품 공급가 (원가)', Number(cost).toLocaleString() + ' 원', 260, false);
+              drawRow('플랫폼/PG 수수료율', feeRate + ' %', 295, false);
+              drawRow('건당 배송비 (택배)', Number(shipping).toLocaleString() + ' 원', 330, false);
+              drawRow('판매 예정 수량', Number(qty).toLocaleString() + ' 개', 365, false);
+
+              // Dashed Line
+              ctx.beginPath();
+              ctx.setLineDash([6, 4]);
+              ctx.strokeStyle = '#cbd5e1';
+              ctx.moveTo(70, 395);
+              ctx.lineTo(570, 395);
+              ctx.stroke();
+              ctx.setLineDash([]);
+
+              // Totals
+              drawRow('총 매출액 (Gross Revenue)', document.getElementById('resTotalSales').textContent, 435, true, '#0f172a');
+              drawRow('(-) 총 매입 원가', document.getElementById('resTotalCost').textContent, 470, false, '#64748b');
+              drawRow('(-) 총 결제 수수료', document.getElementById('resTotalFee').textContent, 505, false, '#64748b');
+              drawRow('(-) 총 배송비', document.getElementById('resTotalShipping').textContent, 540, false, '#64748b');
+
+              // Highlight Box (Net Profit & Margin)
+              ctx.fillStyle = '#fdf2f8';
+              ctx.roundRect ? ctx.roundRect(70, 570, 500, 130, 16) : ctx.rect(70, 570, 500, 130);
+              ctx.fill();
+              ctx.strokeStyle = '#f472b6';
+              ctx.lineWidth = 1.5;
+              ctx.stroke();
+
+              ctx.textAlign = 'left';
+              ctx.fillStyle = '#9d174d';
+              ctx.font = 'bold 13px sans-serif';
+              ctx.fillText('개당 순수익', 95, 605);
+              ctx.fillStyle = '#e11d48';
+              ctx.font = 'bold 18px monospace';
+              ctx.fillText(document.getElementById('resProfitPerItem').textContent, 95, 635);
+
+              ctx.textAlign = 'right';
+              ctx.fillStyle = '#065f46';
+              ctx.font = 'bold 13px sans-serif';
+              ctx.fillText('최종 마진율 (Margin)', 545, 605);
+              ctx.fillStyle = '#059669';
+              ctx.font = '900 24px monospace';
+              ctx.fillText(document.getElementById('resMarginRate').textContent, 545, 635);
+
+              // Bottom Net Profit Total
+              ctx.textAlign = 'left';
+              ctx.fillStyle = '#0f172a';
+              ctx.font = 'bold 14px sans-serif';
+              ctx.fillText('총 실수령 순이익:', 95, 675);
+              ctx.textAlign = 'right';
+              ctx.fillStyle = '#e11d48';
+              ctx.font = '900 22px monospace';
+              ctx.fillText(document.getElementById('resNetProfit').textContent, 545, 678);
+
+              // Barcode Simulation & Footer
+              ctx.textAlign = 'center';
+              ctx.fillStyle = '#94a3b8';
+              ctx.font = '11px sans-serif';
+              ctx.fillText('대박 나는 성공적인 공구를 응원합니다! ✨', 320, 735);
+              ctx.fillText('https://insta-margin-calc.enjoy-onepage.com', 320, 755);
+
+              // Simulated Barcode lines
+              const barY = 770;
+              ctx.fillStyle = '#334155';
+              for (let i = 0; i < 40; i++) {
+                const w = (i % 3 === 0) ? 3 : (i % 2 === 0 ? 2 : 1);
+                ctx.fillRect(180 + i * 7, barY, w, 28);
+              }
+
+              // Download Image
+              const link = document.createElement('a');
+              link.download = '인스타_공구_정산영수증.png';
+              link.href = canvas.toDataURL('image/png');
+              link.click();
+              window.showToastNotification('정산 영수증 PNG가 다운로드되었습니다! 📷');
+            };
+
           });
         </script>
 <!-- LOGIC END -->
