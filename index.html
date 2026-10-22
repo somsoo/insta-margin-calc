@@ -334,6 +334,55 @@
   .grid-cols-1.sm\:grid-cols-3 .text-sm {
     font-size: 0.85rem !important;
   }
+
+  /* 2026 모바일 여백 완전 해소 & 화면 꽉 찬 카드 쉴드 (수정 앱 표준) */
+  body {
+    background: #f8fafc !important; /* 주황색 여백 낭비 제거 -> 다른 최신 앱들과 동일한 모던 배경 */
+    padding: 16px 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  @media (min-width: 640px) {
+    body {
+      padding: 32px 16px !important;
+    }
+  }
+  .glass-card {
+    background: #ffffff !important;
+    border-radius: 1.5rem !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+    width: 100% !important;
+    max-width: 56rem !important; /* max-w-4xl (다른 앱 표준) */
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+  }
+  @media (min-width: 640px) {
+    .glass-card {
+      padding: 2rem !important;
+    }
+  }
+  /* 중첩된 가이드 및 FAQ 섹션의 이중 패딩 완전 제거 */
+  section.max-w-4xl {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  section.max-w-4xl > div {
+    padding: 1.25rem !important;
+    border-radius: 1.25rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  @media (min-width: 640px) {
+    section.max-w-4xl > div {
+      padding: 2rem !important;
+    }
+  }
 </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
@@ -771,6 +820,7 @@
         </script>
 <!-- LOGIC END -->
 </div>
+</div>
 <!-- Google AdSense - Glassmorphism style -->
 <div class="w-full max-w-3xl glass-card py-4 px-6 text-center mb-6 overflow-hidden relative">
 <span class="absolute top-2 left-3 text-[10px] text-gray-500 font-semibold bg-white/50 px-2 py-0.5 rounded-full backdrop-blur-sm">AD</span>
@@ -872,8 +922,6 @@
 </div>
 </section>
 
-      </div>
-</div>
 <!-- 2026 Legal Basis & Disclaimer -->
       <div class="mt-8 mb-4 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg text-xs text-slate-500 text-center border border-slate-200 dark:border-slate-700">
         <p>※ 이 도구의 결과는 참고용이며 법적 효력이 없습니다.</p>
