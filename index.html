@@ -255,6 +255,27 @@
       grid-template-columns: 1fr;
     }
   }
+  /* 2026 Typography, Spacing & Visual Density Enhancements */
+  #marginForm label {
+    font-size: 0.825rem !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+  }
+  #marginForm input {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    padding: 11px 14px !important;
+  }
+  #receiptCard {
+    padding: 1.5rem !important;
+  }
+  #receiptCard .text-xs {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+  #resTotalSales, #resProfitPerItem, #resNetProfit, #resMarginRate {
+    letter-spacing: -0.02em !important;
+  }
 </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
@@ -264,9 +285,7 @@
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 <!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
-<div class="glass-card w-full max-w-6xl p-4 sm:p-6 mb-6">
-<div class="text-3xl font-extrabold text-center text-gray-800 mb-2">인스타 공동구매 마진 계산기</div>
-<p class="text-center text-gray-600 mb-8">플랫폼 수수료와 배송비를 제외한 인스타 공구 순수익 마진을 계산합니다.</p>
+<div class="glass-card w-full max-w-5xl p-4 sm:p-8 mb-6">
 <!-- LOGIC START -->
 <div class="w-full mx-auto font-sans">
 <!-- Header -->
@@ -327,9 +346,8 @@
 <input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all text-slate-800 text-sm font-medium bg-slate-50/50 focus:bg-white" id="quantity" placeholder="100" type="number" min="0" value="100" aria-label="100" / inputmode="numeric">
 </div>
 </form>
-<!-- Receipt Output -->
-<div class="receipt mt-8">
 </div>
+<!-- Right Column: Receipt (6 cols, Sticky) -->
 <div class="lg:col-span-6 lg:sticky lg:top-8 w-full">
 <div class="bg-gradient-to-b from-amber-50/60 to-orange-50/30 border border-amber-200/60 rounded-2xl p-6 shadow-sm relative overflow-hidden font-mono" id="receiptCard">
 <!-- Receipt Decorative Top Notch -->
